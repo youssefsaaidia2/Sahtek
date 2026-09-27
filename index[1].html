@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sahtek – persönliche Kalorien- und Energiebedarfsberechnung.">
+  <title>Sahtek – Deine Gesundheit ist deine Verantwortung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="nav">
+      <div class="brand"><span class="brand-dot"></span>Sahtek</div>
+      <span class="nav-note">Deine Gesundheit ist deine Verantwortung.</span>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">SAHTEK · DEINE GESUNDHEIT IST DEINE VERANTWORTUNG</p>
+        <h1>Deine Gesundheit<br><span>ist deine Verantwortung.</span></h1>
+        <p class="hero-text">Gib deine Daten ein und erhalte eine persönliche Schätzung deines täglichen Kalorienbedarfs – einfach, schnell und individuell.</p>
+      </div>
+      <div class="hero-badge">
+        <div class="pulse"></div>
+        <span>Einfach · Schnell · Persönlich</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <form id="calorieForm">
+        <div class="section-title"><span>01</span> Persönliche Daten</div>
+
+        <div class="grid two">
+          <label>
+            Geschlecht
+            <select id="sex" required>
+              <option value="male">Männlich</option>
+              <option value="female">Weiblich</option>
+            </select>
+          </label>
+          <label>
+            Alter
+            <div class="input-unit"><input id="age" type="number" min="14" max="100" placeholder="z. B. 24" required><span>Jahre</span></div>
+          </label>
+          <label>
+            Größe
+            <div class="input-unit"><input id="height" type="number" min="120" max="230" placeholder="z. B. 178" required><span>cm</span></div>
+          </label>
+          <label>
+            Gewicht
+            <div class="input-unit"><input id="weight" type="number" min="30" max="300" step="0.1" placeholder="z. B. 75" required><span>kg</span></div>
+          </label>
+        </div>
+
+        <div class="section-title"><span>02</span> Alltag & Arbeit</div>
+        <div class="grid two">
+          <label>
+            Arbeitszeit pro Tag
+            <div class="input-unit"><input id="workHours" type="number" min="0" max="24" step="0.5" placeholder="z. B. 8"><span>Std.</span></div>
+          </label>
+          <label>
+            Arbeitstyp
+            <select id="workType">
+              <option value="desk">Sitzende Arbeit</option>
+              <option value="mixed">Gemischte Tätigkeit</option>
+              <option value="active">Körperlich aktive Arbeit</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="section-title"><span>03</span> Sport & Bewegung</div>
+        <div class="grid two">
+          <label>
+            Sportart
+            <select id="sport">
+              <option value="none">Kein regelmäßiger Sport</option>
+              <option value="walking">Gehen / Walking</option>
+              <option value="running">Laufen</option>
+              <option value="cycling">Radfahren</option>
+              <option value="football">Fußball</option>
+              <option value="swimming">Schwimmen</option>
+              <option value="gym">Fitnessstudio / Krafttraining</option>
+              <option value="other">Andere Sportart</option>
+            </select>
+          </label>
+          <label>
+            Training pro Woche
+            <div class="input-unit"><input id="sportDays" type="number" min="0" max="14" step="1" value="0"><span>Tage</span></div>
+          </label>
+          <label>
+            Trainingsdauer
+            <div class="input-unit"><input id="sportMinutes" type="number" min="0" max="600" step="5" value="0"><span>Min.</span></div>
+          </label>
+          <label>
+            Trainingsintensität
+            <select id="intensity">
+              <option value="light">Leicht</option>
+              <option value="moderate" selected>Mittel</option>
+              <option value="hard">Intensiv</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="section-title"><span>04</span> Dein Ziel</div>
+        <div class="goals">
+          <label class="goal"><input type="radio" name="goal" value="lose"><span><b>Abnehmen</b><small>moderates Kaloriendefizit</small></span></label>
+          <label class="goal active"><input type="radio" name="goal" value="maintain" checked><span><b>Gewicht halten</b><small>Kalorien zur Erhaltung</small></span></label>
+          <label class="goal"><input type="radio" name="goal" value="gain"><span><b>Zunehmen</b><small>moderater Kalorienüberschuss</small></span></label>
+        </div>
+
+        <button type="submit">Mein Ergebnis berechnen <span>→</span></button>
+        <p class="disclaimer">Hinweis: Die Ergebnisse sind Schätzwerte und kein medizinischer Rat.</p>
+      </form>
+
+      <aside id="result" class="result hidden">
+        <div class="result-top">
+          <div>
+            <p class="eyebrow">DEIN ERGEBNIS</p>
+            <h2>Dein täglicher Bedarf</h2>
+          </div>
+          <div class="result-icon">✦</div>
+        </div>
+        <div class="calorie-number"><span id="calories">0</span><small>kcal / Tag</small></div>
+
+        <div class="stats">
+          <div><span>Grundumsatz</span><b id="bmr">0 kcal</b></div>
+          <div><span>Tagesverbrauch</span><b id="tdee">0 kcal</b></div>
+          <div><span>Sportanteil</span><b id="sportBurn">0 kcal</b></div>
+        </div>
+
+        <div class="message" id="message"></div>
+        <button class="reset" type="button" id="reset">Neue Berechnung</button>
+      </aside>
+    </section>
+
+    <footer>
+      <span>© 2026 Sahtek</span>
+      <span>Built with care · Personal wellness concept</span>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
